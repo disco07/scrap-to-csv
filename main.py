@@ -20,15 +20,15 @@ def scrap():
             job = jobs.split("-", 1)
 
             if len(job) > 1:
-                jobTitle = job[0].strip()
-                jobCompany = job[1].strip()
+                job_title = job[0].strip()
+                job_company = job[1].strip()
             else:
-                jobTitle = ""
-                jobCompany = job[0].strip()
+                job_title = ""
+                job_company = job[0].strip()
 
             infos["nom"] = name
-            infos["title"] = jobTitle
-            infos["company"] = jobCompany
+            infos["title"] = job_title
+            infos["company"] = job_company
             list_infos.append(copy.deepcopy(infos))
         page += 52
 

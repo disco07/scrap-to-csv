@@ -33,3 +33,6 @@ def scrap():
 
     df = pd.DataFrame(list_infos)
     df.to_excel (r'C:\Users\dkone\Desktop\export_dataframe.xlsx', index = False, header=True)
+
+if __name__ == '__main__':
+    scrap()

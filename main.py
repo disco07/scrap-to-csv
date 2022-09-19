@@ -9,7 +9,7 @@ def scrap():
     list_infos = []
     while page < 211:
         requests_test = requests.get(f'https://a3f.fr/fr/annuaire_temp.php?all&depart_annuaire={page}#div-annuaire')
-        soup_test = BeautifulSoup(requests_test.content)
+        soup_test = BeautifulSoup(requests_test.content, "html.parser")
 
         adherente = soup_test.findAll("div", "card-content")
         infos = {}
@@ -20,15 +20,15 @@ def scrap():
             job = jobs.split("-", 1)
 
             if len(job) > 1:
-                jobTitle = job[0].strip()
-                jobCompany = job[1].strip()
+                job_title = job[0].strip()
+                job_company = job[1].strip()
             else:
-                jobTitle = ""
-                jobCompany = job[0].strip()
+                job_title = ""
+                job_company = job[0].strip()
 
             infos["nom"] = name
-            infos["title"] = jobTitle
-            infos["company"] = jobCompany
+            infos["title"] = job_title
+            infos["company"] = job_company
             list_infos.append(copy.deepcopy(infos))
         page += 52
 

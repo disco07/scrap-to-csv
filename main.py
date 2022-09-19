@@ -9,7 +9,7 @@ def scrap():
     list_infos = []
     while page < 211:
         requests_test = requests.get(f'https://a3f.fr/fr/annuaire_temp.php?all&depart_annuaire={page}#div-annuaire')
-        soup_test = BeautifulSoup(requests_test.content)
+        soup_test = BeautifulSoup(requests_test.content, "html.parser")
 
         adherente = soup_test.findAll("div", "card-content")
         infos = {}
